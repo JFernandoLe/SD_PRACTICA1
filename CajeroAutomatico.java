@@ -1,7 +1,6 @@
 class CuentaBancaria {
-    private int saldo = 1000; // Saldo inicial de la cuenta
+    private int saldo = 1000; 
 
-    //Método sincronizado para evitar acceso simultáneo incorrecto
     public synchronized void retirarDinero(String nombre, int cantidad) {
         if (saldo >= cantidad) {
             System.out.println(nombre + " está retirando $" + cantidad);
@@ -14,7 +13,6 @@ class CuentaBancaria {
     }
 }
 
-// Clase que representa un usuario usando el cajero automático
 class Usuario implements Runnable {
     private CuentaBancaria cuenta;
     private String nombre;
@@ -36,7 +34,6 @@ public class CajeroAutomatico {
     public static void main(String[] args) {
         CuentaBancaria cuenta = new CuentaBancaria();
 
-        // Se crean 3 hilos simulando 3 usuarios intentando retirar dinero
         Thread usuario1 = new Thread(new Usuario(cuenta, "Carlos", 500));
         Thread usuario2 = new Thread(new Usuario(cuenta, "Ana", 700));
         Thread usuario3 = new Thread(new Usuario(cuenta, "Luis", 400));
